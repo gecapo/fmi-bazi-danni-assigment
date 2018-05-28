@@ -157,7 +157,9 @@ where Doctor = ( select EGN from Doctors where FulllName = 'Ivan Petrov' )
 		and
 	bed = ((select Id from Beds where [Floor] = 3 and Room = 10 and IsTaken = 1))
 
-
---TODO
-select (SELECT [Floor], [Room]
-FROM Beds where IsTaken = 0) as freebeds
+--beds				   
+SELECT [Floor],Room
+FROM Beds
+WHERE isTaken = 0
+GROUP BY Room
+HAVING COUNT(isTaken) >0 
